@@ -15,8 +15,8 @@ stages:
         scriptLocation: inlineScript
         workingDirectory: terraform
         inlineScript: |
-          terraform init
-          terraform plan -input=false -out=tfplan
+          terraform init -input=false -backend-config="resource_group_name=$(sa-rg)" -backend-config="storage_account_name=$(sa)" -backend-config="container_name=$(sa-container)"
+          terraform plan -out=tfplan -input=false
           terraform apply tfplan
       env:
         ARM_CLIENT_ID: $(client-id)
