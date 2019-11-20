@@ -6,7 +6,7 @@ stages:
   - job: alignment
     variables:
     - group: dg-tf-vars
-    - group: dg-appsrc-vars
+    - group: dg-appsvc-vars
     steps:
     - task: AzureCLI@1
       displayName: apply
