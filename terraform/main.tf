@@ -39,7 +39,7 @@ resource "azurerm_app_service" "appvc" {
 }
 
 resource "azurerm_application_insights" "appInsight" {
-  name                = "${var.webserivce_name}-appInsight"
+  name                = "${var.webservice_name}-appInsight"
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
   location            = "${data.azurerm_resource_group.rg.location}"
   application_type    = "Other"
