@@ -1,5 +1,6 @@
 variables:
-  webservice_name: dependancyindexer
+  webservice_name: dependencyindexer
+
 stages:
 - stage: terraform
   jobs:

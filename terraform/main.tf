@@ -9,7 +9,7 @@ data "azurerm_resource_group" "rg" {
 }
 
 resource "azurerm_app_service_plan" "sp" {
-  name                = "${var.webserivce_name}-plan"
+  name                = "${var.webservice_name}-plan"
   location            = "${data.azurerm_resource_group.rg.location}"
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
   kind                = "Linux"
@@ -22,7 +22,7 @@ resource "azurerm_app_service_plan" "sp" {
 }
 
 resource "azurerm_app_service" "appvc" {
-  name                = "${var.webserivce_name}"
+  name                = "${var.webservice_name}"
   location            = "${data.azurerm_resource_group.rg.location}"
   resource_group_name = "${data.azurerm_resource_group.rg.name}"
   app_service_plan_id = "${azurerm_app_service_plan.sp.id}"

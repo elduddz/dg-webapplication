@@ -1,4 +1,4 @@
-variable "webserivce_name" {
+variable "webservice_name" {
   
 }
 
