@@ -1,0 +1,9 @@
+<h1 id="tableLabel">Package Index</h1>
+
+<p *ngIf="!frameworks"><em>Loading...</em></p>
+
+  Framework: <select name="packageFramework" id="packageFramework">
+<option *ngFor="let framework of frameworks">
+  {{ framework.name }}
+</option>
+</select>

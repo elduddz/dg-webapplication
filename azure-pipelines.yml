@@ -28,3 +28,29 @@ stages:
         TF_VAR_dependency_graph_url: $(dg_websiteUrl)
         TF_VAR_dependency_graph_code: $(dg_websiteCode)
         TF_VAR_webservice_name: $(webservice_name)
+- stage: deploy
+  dependsOn: terraform
+  jobs:
+  - job: Release
+    container: mcr.microsoft.com/dotnet/core/sdk:2.2
+    steps:
+    - task: DotNetCoreCLI@2
+      displayName: build
+      inputs:
+        command: 'build'
+        projects: '**/src/*.sln'
+    - task: DotNetCoreCLI@2
+      displayName: publish
+      inputs:
+        command: 'publish'
+        publishWebProjects: false
+        zipAfterPublish: true
+        projects: '**/src/*.csproj'
+        modifyOutputPath: false
+    - task: AzureWebApp@1
+      displayName: deploy
+      inputs:
+        azureSubscription: 'pipeline-deploy-dg'
+        appType: webAppLinux
+        appName: '$(webservice_name)'
+        package: '$(System.DefaultWorkingDirectory)/**/*.zip'        
