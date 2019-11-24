@@ -46,7 +46,7 @@ stages:
         command: 'publish'
         publishWebProjects: false
         zipAfterPublish: true
-        projects: '**/src/*.csproj'
+        projects: '**/src/**/*.csproj'
         modifyOutputPath: false
     - task: AzureWebApp@1
       displayName: deploy
