@@ -32,7 +32,8 @@ stages:
   dependsOn: terraform
   jobs:
   - job: Release
-    container: mcr.microsoft.com/dotnet/core/sdk:3.0
+    pool:
+      vmImage: 'ubuntu-latest'
     steps:
     - task: DotNetCoreCLI@2
       displayName: build
