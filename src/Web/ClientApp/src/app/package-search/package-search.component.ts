@@ -12,7 +12,7 @@ export class PackageSearchComponent {
     }
 
     public Go() {
-        var search = document.getElementById("search").nodeValue;
+        let search = (<HTMLInputElement>document.getElementById("search")).value;
         alert(search);
     }
 }
