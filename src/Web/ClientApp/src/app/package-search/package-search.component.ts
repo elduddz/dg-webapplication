@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-package-search',
@@ -7,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PackageSearchComponent {
   public packages: Package[];
+  public search: string;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
     }
 
     public Go() {
-        let search = (<HTMLInputElement>document.getElementById("search")).value;
         alert(search);
     }
 }
