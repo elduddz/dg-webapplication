@@ -6,6 +6,6 @@
     <button class="btn btn-primary" (click)="Go()">Go</button>
   </div>
   <div>
-    <div *ngFor="let package of packages">{{package.Id}} : {{package.Version}}</div>
+    <div *ngFor="let package of packages">{{ package.id }} : {{ package.version }} <button class="btn btn-primary" (click)="Select({{package.id}},{{package.version}})">Select</button></div>
   </div>
 </div>

@@ -33,15 +33,12 @@ namespace Web.Controllers
                     RequestUri = new Uri(query)  
                 };
 
-                request.Headers.Add("Content-Type", "application/json");
+                //request.Headers.Add("Content-Type", "application/json");
                 var response = client.GetAsync(query);
                 var content = response.Result.Content.ReadAsStringAsync().Result;
                 var results = JsonConvert.DeserializeObject<query>(content);
 
-                foreach(var data in results.data)
-                {
-                    yield return new Package { Id = data.id, Version = data.version};
-                }
+                return results.data.Select(x => { return new Package { Id = x.id, Version = x.version }; }).ToArray();
             }
         }
     }

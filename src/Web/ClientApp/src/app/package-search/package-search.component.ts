@@ -19,12 +19,18 @@ export class PackageSearchComponent {
 
     public Go() {
         this._http.get<Package[]>(this._baseUrl + 'nugetsearch?search=' + this.search).subscribe(result => {
+              this.packages = result;
+        }, error => console.error(error));
+    }
+
+    public Select(id: string, version: string) {
+        this._http.get<Package[]>(this._baseUrl + 'nugetsearch?search=' + this.search).subscribe(result => {
             this.packages = result;
         }, error => console.error(error));
     }
 }
 
 interface Package {
-  Id: string;
-  Version: string;
+  id: string;
+  version: string;
 }
