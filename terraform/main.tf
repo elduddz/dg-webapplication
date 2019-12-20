@@ -5,7 +5,7 @@ terraform {
 }
 
 data "azurerm_resource_group" "rg" {
-  name = "dependencygraph-rg"
+  name = "UKW-elduddz"
 }
 
 data "azurerm_app_service_plan" "sp" {
